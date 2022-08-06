@@ -46,6 +46,21 @@ Now you can run Quark using ```java -jar Quark.jar```.
 
 ### Mac
 
+Depending on your mac cpu architecture e.g. darwin-aarch64 m1 pro you may need to supply libusb4java.dylib
+
+1. build libusb4java.dylib from https://github.com/usb4java/libusb4java  
+```
+mkdir build && cd build && cmake .. && make
+```
+When compilation is successful then you can find the library in the
+`build/src` directory.
+
+2. Put `libusb4java.dylib` into the Quark `src/resources` with the specifed directories e.g. `org/usb4java/darwin-aarch64`
+
+3. Goto your quark directory`mvn clean package && java -jar target/Quark.jar`
+
+If Java 8+ use a version which has fx, current working version `18.0.2.fx-zulu` 
+
 Install OpenJDK 11 (or higher) in the terminal:
 
 - Install brew ```/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"```
